@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    min-height: 100vh;
+    font-size: 14px;
+}
+
+.calc-body{
+    display: grid;
+    --heightA:35rem;
+    min-height: var(--heightA);
+    width: calc(var(--heightA)/1.618033);
+    background-color: tomato;
+    font-size: 1.5rem;
+}
+
+.calc-screen {
+    height: 75px;
+    width: 90%;
+    background-color: antiquewhite;
+    margin-top: 1rem;
+    font-size: 2em;
+}
+
+.calc-buttons {
+    display: grid;
+    height: 100px;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(5,1fr);
+
+}
+
+.numButton{
+    border: 1px solid black;
+    background-color: aquamarine;
+}
