@@ -5,24 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator!!!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet"> 
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Calculator</h1>
-
     <div class = "calc-body">
         <div class = "calc-screen">0</div>
         <div class = "calc-buttons">
-            <div class=numButton>9</div>
-            <div class=numButton>8</div>
-            <div class=numButton>7</div>
-            <div class=numButton>6</div>
-            <div class=numButton>5</div>
-            <div class=numButton>4</div>
-            <div class=numButton>3</div>
-            <div class=numButton>2</div>
-            <div class=numButton>1</div>
+            <div class="numButton double AC" data-btn="AC">AC</div>
+            <div class="numButton" data-btn="%">%</div>
+            <div class="numButton"data-btn="/">/</div>
+            <div class="numButton" data-btn="7">7</div>
+            <div class="numButton" data-btn="8">8</div>
+            <div class="numButton" data-btn="9">9</div>
+            <div class="numButton" data-btn="X">X</div>
+            <div class="numButton" data-btn="4">4</div>
+            <div class="numButton" data-btn="5">5</div>
+            <div class="numButton" data-btn="6">6</div>
+            <div class="numButton" data-btn="-">-</div>
+            <div class="numButton" data-btn="1">1</div>
+            <div class="numButton" data-btn="2">2</div>
+            <div class="numButton" data-btn="3">3</div>
+            <div class="numButton" data-btn="+">+</div>
+            <div class="numButton double" data-btn="0">0</div>
+            <div class="numButton" data-btn=".">.</div>
+            <div class="numButton equals" data-btn="=">=</div>
+
         </div>
     </div>
     
