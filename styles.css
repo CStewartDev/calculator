@@ -39,7 +39,7 @@ body {
     width: 90%;
     background-color: #edf6f9;
     margin: 1rem;
-    font-size: 2em;
+    font-size: 1.5em;
     border-radius: 20px;
 }
 
@@ -51,7 +51,7 @@ body {
     padding: 1rem;
 }
 
-.numButton{
+.btn{
     display: flex;
     border: 2px solid #ffDDD1;
     background-color: #69ddd1;
@@ -62,7 +62,7 @@ body {
     transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.numButton:hover{
+.btn:hover{
     border: 2px solid #EE8f6c;
 }
 
