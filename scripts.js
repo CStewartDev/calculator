@@ -37,8 +37,8 @@ function opBtnPress(e) {
     if(opStore !==null) return opStore = op;
     opStore = op;
     storage = screenNum;
-    screenNum = "0";
     updateScreen(screenNum);
+    screenNum = "0";
 }
 
 function eqBtnPress(){
