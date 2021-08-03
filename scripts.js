@@ -3,8 +3,9 @@ const numBtns = document.querySelectorAll('.numButton');
 const opBtns = document.querySelectorAll('.opButton');
 const clearBtn = document.querySelector('.acButton');
 const eqBtn = document.querySelector('.eqButton');
-const dotBtn = document.querySelector('.dotButton')
-const percentBtn = document.querySelector('.percentButton')
+const dotBtn = document.querySelector('.dotButton');
+const percentBtn = document.querySelector('.percentButton');
+const backBtn = document.querySelector('.backButton');
 
 
 let screenNum = "0";
@@ -36,7 +37,7 @@ function opBtnPress(e) {
     if(opStore !==null) return opStore = op;
     opStore = op;
     storage = screenNum;
-    updateScreen(screenNum)
+    updateScreen(screenNum);
     screenNum = "0";
 }
 
@@ -48,7 +49,7 @@ function eqBtnPress(){
     result = operations[opStore](storage,screenNum);
     screenNum = result;
     storage = "0";
-    updateScreen(result)
+    updateScreen(result);
     opStore = null;
     wasCalculated = true;
 }
@@ -57,6 +58,22 @@ function clearScreen() {
     screenNum = "0";
     storage = "0";
     opStore = null;
+    updateScreen(screenNum);
+}
+
+function insertDot(){
+    screenNum = screen.textContent.includes('.')? screenNum : screen.textContent + ('.');
+    updateScreen(screenNum);
+}
+
+function percentage(){
+    screenNum = Number(screen.textContent) /100;
+    updateScreen(screenNum);
+}
+
+function backSpace() {
+    screenNum = screen.textContent.slice(0,-1);
+    if(screenNum =="") screenNum = "0"
     updateScreen(screenNum)
 }
 
@@ -68,5 +85,6 @@ numBtns.forEach(btn=>btn.addEventListener('click', numBtnPress))
 opBtns.forEach(btn=>btn.addEventListener('click',opBtnPress))
 clearBtn.addEventListener("click",clearScreen);
 eqBtn.addEventListener('click',eqBtnPress)
-dotBtn.addEventListener('click',e=>console.log(e))
-percentBtn.addEventListener('click',e=>console.log(e))
+dotBtn.addEventListener('click',insertDot)
+percentBtn.addEventListener('click',percentage)
+backBtn.addEventListener('click',backSpace)
