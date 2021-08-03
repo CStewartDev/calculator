@@ -25,7 +25,7 @@ const operations = {
 
 function numBtnPress(e) {
     if(wasCalculated) screenNum = "0"
-    let num = e.target.innerText;
+    let num = e.innerText || e.target.innerText;
     screenNum == "0" ? screenNum = num: screenNum += num;
     updateScreen(screenNum);
     wasCalculated = false;
@@ -33,12 +33,12 @@ function numBtnPress(e) {
     
 
 function opBtnPress(e) {
-    let op = e.target.innerText;
+    let op = e.innerText || e.target.innerText;
     if(opStore !==null) return opStore = op;
     opStore = op;
     storage = screenNum;
-    updateScreen(screenNum);
     screenNum = "0";
+    updateScreen(screenNum);
 }
 
 function eqBtnPress(){
@@ -78,20 +78,35 @@ function backSpace() {
 }
 
 function updateScreen(data){
-    screen.textContent = new String(data).substr(0,12);
+    screen.textContent = new String(data).substr(0,11);
 }
 
-function numKeyPress(e){
-    const btn = document.querySelector(`div[data-btn="${e.key}"]`)
-    numBtnPress()
+function keyPress(e){
+    e.preventDefault();
+    const btn = document.querySelector(`div[data-btn="${e.key}"]`);
+    if(!btn) return;
+    if(btn.classList[0] === "numButton"){
+        numBtnPress(btn);
+    } else if(btn.classList[0] === "opButton"){
+        opBtnPress(btn);
+    } else if(btn.classList[0] === "acButton"){
+        clearScreen();
+    } else if(btn.classList[0] === "percentButton"){
+        percentage();
+    } else if(btn.classList[0] === "backButton"){
+        backSpace();
+    } else if(btn.classList[0] === "eqButton"){
+        eqBtnPress();
+    } else if(btn.classList[0] === "dotButton"){
+        insertDot();
+    }
 }
 
 numBtns.forEach(btn=>btn.addEventListener('click', numBtnPress))
-document.addEventListener('keydown', numKeyPress);
+document.addEventListener('keydown', keyPress);
 opBtns.forEach(btn=>btn.addEventListener('click',opBtnPress))
 clearBtn.addEventListener("click",clearScreen);
 eqBtn.addEventListener('click',eqBtnPress)
 dotBtn.addEventListener('click',insertDot)
 percentBtn.addEventListener('click',percentage)
 backBtn.addEventListener('click',backSpace)
-//window.addEventListener()

@@ -2,6 +2,9 @@
 TOP Calculator project
 
 
+This was a fun Project. I have all the requirements and even added the bonus items. I took a couple days off from it and then had a big brain moment in the shower. I had to write it down and Voila. Still need to work on Committing more. I generally like the style of this app. A formula screen would be a neat add on.
+
+
 ******************PROJECT REQUIREMENTS******************
 
 Here are some use cases (abilities your project needs to have):
