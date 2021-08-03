@@ -1,14 +1,16 @@
 const screen = document.querySelector(".calc-screen");
 const numBtns = document.querySelectorAll('.numButton');
-const opBtns = document.querySelectorAll('.opButton')
+const opBtns = document.querySelectorAll('.opButton');
 const clearBtn = document.querySelector('.acButton');
-const eqBtn = document.querySelector('.eqButton')
+const eqBtn = document.querySelector('.eqButton');
+const dotBtn = document.querySelector('.dotButton')
+const percentBtn = document.querySelector('.percentButton')
 
 
 let screenNum = "0";
 let storage = "0";
 let opStore = null;
-let isCalculated = false;
+let wasCalculated = false;
 
 const operations = {
     "+": (...args) => args.reduce((total,curr)=> total + curr),
@@ -21,11 +23,11 @@ const operations = {
 }
 
 function numBtnPress(e) {
-    if(isCalculated) screenNum = "0"
+    if(wasCalculated) screenNum = "0"
     let num = e.target.innerText;
     screenNum == "0" ? screenNum = num: screenNum += num;
     updateScreen(screenNum);
-    isCalculated = false;
+    wasCalculated = false;
     }
     
 
@@ -48,7 +50,7 @@ function eqBtnPress(){
     storage = "0";
     updateScreen(result)
     opStore = null;
-    isCalculated = true;
+    wasCalculated = true;
 }
 
 function clearScreen() {
@@ -59,10 +61,12 @@ function clearScreen() {
 }
 
 function updateScreen(data){
-    screen.textContent = data
+    screen.textContent = new String(data).substr(0,12);
 }
 
 numBtns.forEach(btn=>btn.addEventListener('click', numBtnPress))
 opBtns.forEach(btn=>btn.addEventListener('click',opBtnPress))
 clearBtn.addEventListener("click",clearScreen);
 eqBtn.addEventListener('click',eqBtnPress)
+dotBtn.addEventListener('click',e=>console.log(e))
+percentBtn.addEventListener('click',e=>console.log(e))
