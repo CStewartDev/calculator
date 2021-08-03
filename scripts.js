@@ -33,9 +33,11 @@ function numBtnPress(e) {
     
 
 function opBtnPress(e) {
+    let tempOp = null;
     let op = e.innerText || e.target.innerText;
-    if(opStore !==null) return opStore = op;
-    opStore = op;
+    if(opStore !==null) tempOp = op;
+    if(opStore !==null && tempOp !==null) eqBtnPress();
+    opStore = op || tempOp;
     storage = screenNum;
     updateScreen(screenNum);
     screenNum = "0";
