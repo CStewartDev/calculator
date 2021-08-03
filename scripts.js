@@ -81,10 +81,17 @@ function updateScreen(data){
     screen.textContent = new String(data).substr(0,12);
 }
 
+function numKeyPress(e){
+    const btn = document.querySelector(`div[data-btn="${e.key}"]`)
+    numBtnPress()
+}
+
 numBtns.forEach(btn=>btn.addEventListener('click', numBtnPress))
+document.addEventListener('keydown', numKeyPress);
 opBtns.forEach(btn=>btn.addEventListener('click',opBtnPress))
 clearBtn.addEventListener("click",clearScreen);
 eqBtn.addEventListener('click',eqBtnPress)
 dotBtn.addEventListener('click',insertDot)
 percentBtn.addEventListener('click',percentage)
 backBtn.addEventListener('click',backSpace)
+//window.addEventListener()
