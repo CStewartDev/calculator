@@ -8,7 +8,7 @@ const eqBtn = document.querySelector('.eqButton')
 let screenNum = "0";
 let storage = "0";
 let opStore = null;
-let usePrevNum = false;
+let isCalculated = false;
 
 const operations = {
     "+": (...args) => args.reduce((total,curr)=> total + curr),
@@ -21,24 +21,21 @@ const operations = {
 }
 
 function numBtnPress(e) {
+    if(isCalculated) screenNum = "0"
     let num = e.target.innerText;
-    num !== "0"? usePrevNum = false:usePrevNum = true;
-    if(usePrevNum) num = "0";
-    
     screenNum == "0" ? screenNum = num: screenNum += num;
-    debugger;
     updateScreen(screenNum);
+    isCalculated = false;
     }
     
 
 function opBtnPress(e) {
-    usePrevNum = true;
     let op = e.target.innerText;
     if(opStore !==null) return opStore = op;
     opStore = op;
     storage = screenNum;
     updateScreen(screenNum)
-    //screenNum = "0";
+    screenNum = "0";
 }
 
 function eqBtnPress(){
@@ -51,6 +48,7 @@ function eqBtnPress(){
     storage = "0";
     updateScreen(result)
     opStore = null;
+    isCalculated = true;
 }
 
 function clearScreen() {
